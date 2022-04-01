@@ -18,15 +18,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.codingdojo.doctors.models.Comment;
 import com.codingdojo.doctors.models.Post;
+import com.codingdojo.doctors.models.User;
 import com.codingdojo.doctors.services.DoctorService;
 import com.codingdojo.doctors.services.UserService;
 
 @Controller
 public class DoctorController {
     @Autowired
-    private DoctorService doctoreService;
+    private DoctorService doctorService;
     @Autowired
     private UserService userService;
+    
+    
+    @GetMapping("/")
+    public String LandingPage( ) {
+    	return "landing.jsp";
+    }
     
 //Post template render
     @GetMapping("/posts/new")
@@ -37,14 +44,14 @@ public class DoctorController {
     }
     
     @PostMapping("/posts/new")
-    public String newPost(@Valid @ModelAttribute("post")Post post, Principal principal, BindingResult result, Model model) {
+    public String newPost(@Valid @ModelAttribute("post")Post post, BindingResult result, Principal principal, Model model) {
     	String username = principal.getName();
     	model.addAttribute("currentUser", userService.findByUsername(username));
     	if (result.hasErrors()) {
     		return "NewPost.jsp";
     	} else {
     		
-    		this.doctoreService.createPost(post);
+    		this.doctorService.createPost(post);
     		return "redirect:/posts/" + post.getId();
     	}
     }
@@ -55,15 +62,38 @@ public class DoctorController {
     public String allPost(Principal principal, Model model) {
     	String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-        List<Post> posts = this.doctoreService.allPosts();
+        List<Post> posts = this.doctorService.allPosts();
         model.addAttribute("posts", posts);
         return "AllPosts.jsp";
     }
 
 // new comment
-    @GetMapping("/post/{id}")
-    public String newComment(@ModelAttribute("comment")Comment comment,@PathVariable("id") Long id, Model model) {
-        return "newcomment.jsp";
+    @GetMapping("/posts/{id}")
+    public String newComment(@ModelAttribute("postComment") Comment comment,@PathVariable("id") Long id, Model model,Principal principal) {
+    	String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        Post thisPost = doctorService.findPostById(id);
+        List<Comment> postComments = thisPost.getPostComments();
+        model.addAttribute("post", thisPost);
+        model.addAttribute("comments", postComments);
+        return "ShowPost.jsp";
+    }
+    
+    @PostMapping("/posts/{id}")
+    public String newComment(@PathVariable("id") Long id, @Valid @ModelAttribute("postComment") Comment postComment, BindingResult result, Principal principal, Model model) {
+    	String username = principal.getName();
+    	model.addAttribute("currentUser", userService.findByUsername(username));
+    	User thisUser = userService.findByUsername(username);
+    	Post thisPost = doctorService.findPostById(id);
+    	List<Comment> postComments = thisPost.getPostComments();
+    	model.addAttribute("post", thisPost);
+    	model.addAttribute("comments", postComments);
+    	if (result.hasErrors()) {
+    		return "ShowPost.jsp";
+    	} else {
+    		this.doctorService.createComment(postComment);
+    		return "redirect:/posts/" + id;
+    	}
     }
 // Doctor profile
     @GetMapping("/doctor/{id}")

@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.codingdojo.doctors.models.Comment;
 import com.codingdojo.doctors.models.Post;
 import com.codingdojo.doctors.models.User;
@@ -42,6 +41,7 @@ public class DoctorService {
     
   //Comment CRUD commands
     public Comment createComment( Comment comment) {
+    	comment.setId(null);
     	return this.commentRepo.save(comment);
     	
     }
@@ -57,7 +57,15 @@ public class DoctorService {
 		
 	}
 	
-	
+//	public Comment addCoomentToUser(User user, Comment comment) {
+//		user.getUserComments().add(comment);
+//		return this.commentRepo.save(comment);
+//	}
+//	
+//	public Comment addCommentToPost(Post post, Comment comment) {
+//		post.getPostComments().add(comment);
+//		return this.commentRepo.save(comment);
+//	}
 	
 	//Post
 	public  List<Post> allPosts(){
