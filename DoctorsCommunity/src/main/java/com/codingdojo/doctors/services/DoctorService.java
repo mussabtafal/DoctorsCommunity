@@ -99,6 +99,9 @@ public class DoctorService {
 		this.postRepo.deleteById(id);
 		
 	}
+	public List<Post> findCategory(String mahmoud){
+		return this.postRepo.findByCategory(mahmoud);
+	}
 	
 	
 	

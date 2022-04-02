@@ -14,6 +14,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -74,41 +75,26 @@
          </nav>
        </div>
      </div>
-     <div class="row">
-     		<h1 class="my-5">Doctor's Community</h1>
-     		<div class="col-8 justify-content-between" style="display:flex;">
-     			<h2>Title: <c:out value="${post.title}"></c:out></h2>
-     			<h2>Category: <c:out value="${post.category}"></c:out></h2>
-     			<h2>Patient: <c:out value="${post.postUser.username}"></c:out></h2>
-     		</div>
-     		<div class="col-8">
-     			<div class= "overflow-auto p-5 " style="height:auto; border: 2px solid black; border-radius: 15px;">
-     				<p style="font-size: 25px;"><c:out value="${post.description}"></c:out></p>
-     				<form:form action="/posts/${post.id}" method="post" modelAttribute="postComment">
-  					<form:input type="hidden" path="commentPost" value="${post.id}"/>
-     				<form:input type="hidden" path="commentUser" value="${currentUser.id}"/>
-     					<div class="form-floating">
-							<form:textarea path="content" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></form:textarea>
-							<form:label path="content" for="floatingTextarea2">Comment</form:label>
-						</div>
-						<div class="row justify-content-end">
-							<button type="submit" class="btn btn-outline-secondary col-1 my-4 me-3">Advise</button>
-						</div>
-     				</form:form>
-     				<div class="p-5 overflow-auto" style="height:400px; border: 2px solid black; border-radius: 15px;">
-    				<c:forEach items="${comments}" var="comment">
-     					<div class="overflow-auto p-3" style="height:150px; border: 2px solid black; border-radius: 15px;">
-							<p style="font-size: 25px;"><c:out value="${comment.content}"></c:out></p>
-     					</div>
-					</c:forEach> 
-     				</div>
-     			</div>
-     		</div>  		
-     		<div class="col-8">
-     			
-     		</div>
-     </div>
-         <footer class="text-center text-lg-start text-white bg-secondary mt-3" >
+      <div class="row pt-5">
+      		<h1>Doctor's Community</h1>
+      		<h3>Welcome, <c:out value="${currentUser.username}"></c:out></h3>
+      </div>
+      <div class="row justify-content-between p-3">
+      		<div class="col-8 overflow-auto border border-dark" style="height:600px; border-radius:10px; margin-left: 100px;">
+      		   	<c:forEach items="${posts}" var="post">
+					<div class="m-3 p-2 overflow-auto" style="border:solid 2px LightGray; border-radius:15px; height: 150px;">
+						<h3 class="text-start"><span style="font-size:15px; color:Gray;">Posted by:</span> <c:out value="${post.postUser.username}">
+						</c:out> <span style="font-size:15px; color:Gray;">on <fmt:formatDate value="${post.createdAt}" type="date" pattern="dd-MMM-yyyy"/></span></h3>
+						<p style="font-size:20px;"><c:out value="${post.description}"></c:out></p>
+					</div>
+					<div class="row text-end me-2">
+						<a href="/posts/${post.id}"><button type="button" class="btn btn-outline-secondary">Advise</button></a>
+					</div>
+				</c:forEach>    
+          	</div>
+       </div>
+  	</div>
+    <footer class="text-center text-lg-start text-white bg-secondary" >
                 <!-- Grid container -->
                 <div class="container p-4 pb-0">
                     <!-- Section: Links -->
@@ -196,7 +182,11 @@
                     <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
                 </div>
                 <!-- Copyright -->
-            </footer>  
-   </div>
-</body>
+            </footer>   		
+  </body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 </html>
