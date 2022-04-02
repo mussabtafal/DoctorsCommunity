@@ -25,7 +25,7 @@
        <div class="nav-container bg-secondary">
          <nav class="navbar navbar-expand-lg navbar-light">
            <div class="container-fluid">
-             <a class="navbar-brand" href="#">LOGO</a>
+             <a class="navbar-brand" href="/"><img alt="" src="/img/logoBLUE.jpg"  height="40px" style="border-radius: 7px;"></a>
              <button
                class="navbar-toggler"
                type="button"
@@ -40,7 +40,7 @@
              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                  <li class="nav-item">
-                   <a class="nav-link active" aria-current="page" href="#"
+                   <a class="nav-link active" aria-current="page" href="/"
                      >Home</a
                    >
                  </li>
@@ -53,7 +53,7 @@
                    <a class="nav-link" aria-current="page" href="#">Section</a>
                  </li>
                  <li class="nav-item">
-                   <a class="nav-link" aria-current="page" href="#"
+                   <a class="nav-link" aria-current="page" href="/#about"
                      >About us</a
                    >
                  </li>
@@ -65,7 +65,7 @@
                    placeholder="Search"
                    aria-label="Search"
                  />
-                 <button class="btn btn-outline-success" type="submit">
+                 <button class="btn btn-primary" type="submit">
                    Search
                  </button>
                </form>
@@ -223,6 +223,95 @@
                 <!-- Copyright -->
             </footer>   
      </div>
+         <footer class="text-center text-lg-start text-white bg-secondary mt-3" >
+                <!-- Grid container -->
+                <div class="container p-4 pb-0">
+                    <!-- Section: Links -->
+                    <section class="">
+                        <!--Grid row-->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">
+                                    Company name
+                                </h6>
+                                <p>
+                                    Here you can use rows and columns to organize your footer
+                                    content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit.
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <hr class="w-100 clearfix d-md-none" />
+
+                            <!-- Grid column -->
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                                <p>
+                                    <a class="text-white">MDBootstrap</a>
+                                </p>
+                                <p>
+                                    <a class="text-white">MDWordPress</a>
+                                </p>
+                                <p>
+                                    <a class="text-white">BrandFlow</a>
+                                </p>
+                                <p>
+                                    <a class="text-white">Bootstrap Angular</a>
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <hr class="w-100 clearfix d-md-none" />
+
+                            <!-- Grid column -->
+                            <hr class="w-100 clearfix d-md-none" />
+
+                            <!-- Grid column -->
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                                <p><i class="fas fa-home mr-3"></i> Axsos Academy, NY 10012, US</p>
+                                <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                                <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                                <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                     <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+
+                     <!-- Facebook -->
+                      <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
+                         role="button"><img alt="" src="/img/facebook-logo.jpg"  height="40px" style="border-radius: 7px;"></a>
+
+                     <!-- Twitter -->
+                       <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
+                         role="button"><img alt="" src="/img/Twitter.png"  height="40px" style="border-radius: 7px;"></a>
+
+
+                     <!-- Linkedin -->
+                     <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
+                         role="button"><img alt="" src="/img/linked.png"  height="40px" style="border-radius: 7px;"></a>
+                     <!-- Github -->
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
+                         role="button"><img alt="" src="/img/github.png"  height="40px" style="border-radius: 7px;"></a>
+                 
+                        </div>
+                        <!--Grid row-->
+                    </section>
+                    <!-- Section: Links -->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                    © 2020 Copyright:
+                    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>  
    </div>
 </body>
 </html>

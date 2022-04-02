@@ -6,15 +6,12 @@
 <html lang="en">
 
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
+  
+
     <title>Add new Post</title>
 </head>
 
@@ -24,7 +21,7 @@
         <div class="nav-container bg-secondary">
           <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">LOGO</a>
+               <a class="navbar-brand" href="/"><img alt="" src="/img/logoBLUE.jpg"  height="40px" style="border-radius: 7px;"></a>
               <button
                 class="navbar-toggler"
                 type="button"
@@ -39,7 +36,7 @@
               <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"
+                    <a class="nav-link active" aria-current="page" href="/"
                       >Home</a
                     >
                   </li>
@@ -52,7 +49,7 @@
                     <a class="nav-link" aria-current="page" href="#">Section</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#"
+                    <a class="nav-link" aria-current="page" href="/#about"
                       >About us</a
                     >
                   </li>
@@ -64,7 +61,7 @@
                     placeholder="Search"
                     aria-label="Search"
                   />
-                  <button class="btn btn-outline-success" type="submit">
+                  <button class="btn btn-primary" type="submit">
                     Search
                   </button>
                 </form>
@@ -93,9 +90,14 @@
 	                        </div>
 	                        <div class="col-sm">
 	                            <form:select path="category" class="form-select" aria-label="Default select example">
-	                                <form:option value="testt">One</form:option>
-	                                <form:option value="testt">Two</form:option>
-	                                <form:option value="testt">Three</form:option>
+	                                <form:option value="Respiratory">Respiratory</form:option>
+	                                <form:option value="Cardiac ">Cardiac </form:option>
+	                                <form:option value="Dermatologic">Dermatologic</form:option>
+	                                <form:option value="Orthopedic">Orthopedic</form:option>
+	                                <form:option value="Urologic">Urologic</form:option>
+	                                <form:option value="Genital">Genital</form:option>
+	                                <form:option value="Musculoskeletal">Musculoskeletal</form:option>
+	                                <form:option value="gastrologic">gastrologic</form:option>  
 	                            </form:select>
 	                            <form:errors path="category" class = "my-3" style="color: red;"/>
 	                        </div>
@@ -153,7 +155,7 @@
             </div>
         </div>     		
    </div>
-   <footer class="text-center text-lg-start text-white" style="background-color: #929fba">
+   <footer class="text-center text-lg-start text-white bg-secondary " >
      <!-- Grid container -->
      <div class="container p-4 pb-0">
          <!-- Section: Links -->
@@ -213,27 +215,20 @@
                      <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
 
                      <!-- Facebook -->
-                     <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!"
-                         role="button"><i class="fab fa-facebook-f"></i></a>
+                      <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
+                         role="button"><img alt="" src="/img/facebook-logo.jpg"  height="40px" style="border-radius: 7px;"></a>
 
                      <!-- Twitter -->
-                     <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!"
-                         role="button"><i class="fab fa-twitter"></i></a>
+                       <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
+                         role="button"><img alt="" src="/img/Twitter.png"  height="40px" style="border-radius: 7px;"></a>
 
-                     <!-- Google -->
-                     <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!"
-                         role="button"><i class="fab fa-google"></i></a>
-
-                     <!-- Instagram -->
-                     <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!"
-                         role="button"><i class="fab fa-instagram"></i></a>
 
                      <!-- Linkedin -->
-                     <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!"
-                         role="button"><i class="fab fa-linkedin-in"></i></a>
+                     <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
+                         role="button"><img alt="" src="/img/linked.png"  height="40px" style="border-radius: 7px;"></a>
                      <!-- Github -->
-                     <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!"
-                         role="button"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
+                         role="button"><img alt="" src="/img/github.png"  height="40px" style="border-radius: 7px;"></a>
                  </div>
              </div>
              <!--Grid row-->
@@ -248,7 +243,8 @@
          <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
      </div>
      <!-- Copyright -->
- 	</footer>     
+ 	</footer> 
+ 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 </body>
  <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

@@ -32,7 +32,7 @@ public class DoctorController {
     
     @GetMapping("/")
     public String LandingPage( ) {
-    	return "landing.jsp";
+    	return "Landing.jsp";
     }
     
 //Post template render
@@ -125,6 +125,17 @@ public class DoctorController {
     @GetMapping("/patient/{id}")
     public String pationt(@PathVariable("id") Long id, Model model) {
         return "pationt.jsp";
+    }
+// render by category
+    @GetMapping("/category/{name}")
+    public String getByGategory(@PathVariable("name") String name, Model model, Principal principal) {
+    	String username = principal.getName();
+    	model.addAttribute("currentUser", userService.findByUsername(username));
+    	
+    	List<Post> x = this.doctorService.findCategory(name);
+    	System.out.println(x);
+    	model.addAttribute("posts", x);
+    	return "CatPost.jsp";
     }
 
 

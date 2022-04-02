@@ -18,7 +18,7 @@
                 <li><a href="#statistics">Statistics</a></li>
                 <li><a  href="#join" >Register</a></li>
                 <li><a href="#about">About Us</a></li>
-                <li><a href="/Community" >Our Community</a></li>
+                <li><a href="/posts" >Our Community</a></li>
                 <li><a href="/user/#UserId">Profile</a></li>
               </ul> 
             </nav>
