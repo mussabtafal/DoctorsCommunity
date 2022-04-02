@@ -76,12 +76,12 @@
      </div>
      <div class="row">
      		<h1 class="my-5">Doctor's Community</h1>
-     		<div class="col-8 justify-content-between" style="display:flex;">
+     		<div class="col-12 justify-content-between" style="display:flex;">
      			<h2>Title: <c:out value="${post.title}"></c:out></h2>
      			<h2>Category: <c:out value="${post.category}"></c:out></h2>
      			<h2>Patient: <c:out value="${post.postUser.username}"></c:out></h2>
      		</div>
-     		<div class="col-8">
+     		<div class="col-12">
      			<div class= "overflow-auto p-5 " style="height:auto; border: 2px solid black; border-radius: 15px;">
      				<p style="font-size: 25px;"><c:out value="${post.description}"></c:out></p>
      				<form:form action="/posts/${post.id}" method="post" modelAttribute="postComment">
@@ -95,18 +95,133 @@
 							<button type="submit" class="btn btn-outline-secondary col-1 my-4 me-3">Advise</button>
 						</div>
      				</form:form>
-     				<div class="p-5 overflow-auto" style="height:400px; border: 2px solid black; border-radius: 15px;">
+     				<div class="p-3 overflow-auto" style="height:400px; border: 2px solid black; border-radius: 15px;">
     				<c:forEach items="${comments}" var="comment">
-     					<div class="overflow-auto p-3" style="height:150px; border: 2px solid black; border-radius: 15px;">
-							<p style="font-size: 25px;"><c:out value="${comment.content}"></c:out></p>
+     					<div class="overflow-auto p-3 my-4" style="height:190px; border: 2px solid black; border-radius: 15px;">
+							<p style="font-size: 20px;"><c:out value="${comment.content}"></c:out></p>
+							<div class="text-end" >
+								<div class="form-floating mb-3 col-1 ">
+								  <input type="number" min ="0" max="5" class="form-control" style="width:70px" id="floatingInput" placeholder="name@example.com">
+								  <label for="floatingInput">Rating</label>
+								</div>
+				                <c:set var="liked" value="${false}"/>
+                                <c:forEach items="${comment.likedByUsers}" var="liker">
+                                <c:set var="user1" value="${currentUser.id}"/>
+                                <c:set var="user2" value="${liker.id}"/>
+                                    <c:if test="${user1 == user2}">
+                                        <c:set var="liked" value="${true}"/>
+                                    </c:if>
+                                </c:forEach>
+                                <c:choose>
+                                    <c:when test="${liked == false}">
+                        					<a href="/posts/${comment.commentPost.id}/like/${comment.id}"><button type="button" class="btn btn-sm btn-outline-secondary" style="height:30px">Like</button></a>
+                                    </c:when>
+                                    <c:otherwise>
+											<a href="/posts/${comment.commentPost.id}/unlike/${comment.id}"><button type="button" class="btn btn-sm btn-outline-secondary" style="height:30px">DisLike</button></a>
+                                    </c:otherwise>
+                                </c:choose>
+							</div>
      					</div>
 					</c:forEach> 
-     				</div>
+     				</div>	
      			</div>
      		</div>  		
-     		<div class="col-8">
-     			
-     		</div>
+     		    <footer class="text-center text-lg-start text-white mt-5" style="background-color: #929fba">
+                <!-- Grid container -->
+                <div class="container p-4 pb-0">
+                    <!-- Section: Links -->
+                    <section class="">
+                        <!--Grid row-->
+                        <div class="row">
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">
+                                    Company name
+                                </h6>
+                                <p>
+                                    Here you can use rows and columns to organize your footer
+                                    content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit.
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <hr class="w-100 clearfix d-md-none" />
+
+                            <!-- Grid column -->
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                                <p>
+                                    <a class="text-white">MDBootstrap</a>
+                                </p>
+                                <p>
+                                    <a class="text-white">MDWordPress</a>
+                                </p>
+                                <p>
+                                    <a class="text-white">BrandFlow</a>
+                                </p>
+                                <p>
+                                    <a class="text-white">Bootstrap Angular</a>
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <hr class="w-100 clearfix d-md-none" />
+
+                            <!-- Grid column -->
+                            <hr class="w-100 clearfix d-md-none" />
+
+                            <!-- Grid column -->
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                                <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                                <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                                <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                                <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                                <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+
+                                <!-- Facebook -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!"
+                                    role="button"><i class="fab fa-facebook-f"></i></a>
+
+                                <!-- Twitter -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!"
+                                    role="button"><i class="fab fa-twitter"></i></a>
+
+                                <!-- Google -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!"
+                                    role="button"><i class="fab fa-google"></i></a>
+
+                                <!-- Instagram -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!"
+                                    role="button"><i class="fab fa-instagram"></i></a>
+
+                                <!-- Linkedin -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!"
+                                    role="button"><i class="fab fa-linkedin-in"></i></a>
+                                <!-- Github -->
+                                <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!"
+                                    role="button"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <!--Grid row-->
+                    </section>
+                    <!-- Section: Links -->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                    © 2020 Copyright:
+                    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>   
      </div>
    </div>
 </body>

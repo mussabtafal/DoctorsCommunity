@@ -57,7 +57,7 @@ public class DoctorController {
     }
     
 
-    //all posts
+//all posts
     @GetMapping("/posts")
     public String allPost(Principal principal, Model model) {
     	String username = principal.getName();
@@ -95,6 +95,27 @@ public class DoctorController {
     		return "redirect:/posts/" + id;
     	}
     }
+    
+	@GetMapping("/posts/{id}/like/{comId}")
+	public String likeComment (@PathVariable("id") Long id, @PathVariable("comId") Long comId, Principal principal, Model model) {
+			String username = principal.getName();
+	    	model.addAttribute("currentUser", userService.findByUsername(username));
+			User thisUser = userService.findByUsername(username);
+			Comment thisComment = doctorService.findCommentById(comId);
+			doctorService.likeComment(thisUser, thisComment);
+			return "redirect:/posts/"+id;
+	}
+	
+	@GetMapping("/posts/{id}/unlike/{comId}")
+	public String dislikeComment (@PathVariable("id") Long id, @PathVariable("comId") Long comId, Principal principal, Model model) {
+			String username = principal.getName();
+	    	model.addAttribute("currentUser", userService.findByUsername(username));
+			User thisUser = userService.findByUsername(username);
+			Comment thisComment = doctorService.findCommentById(comId);
+			doctorService.cancelLikeComment(thisUser, thisComment);
+			return "redirect:/posts/"+id;
+	}
+	
 // Doctor profile
     @GetMapping("/doctor/{id}")
     public String doctore(@PathVariable("id") Long id, Model model) {

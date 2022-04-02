@@ -30,7 +30,7 @@ public class Comment {
     private Long id;
     
     @NotEmpty(message="Comment is required!")
-    @Size(min=3, max=70, message="Comment must be atleast 3 characters")
+    @Size(min=3, message="Comment must be atleast 3 characters")
     private String content;
     
     @Column(updatable=false)
@@ -58,7 +58,7 @@ public class Comment {
 	
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-        name = "users_comments", 
+        name = "likes", 
         joinColumns = @JoinColumn(name = "comment_id"), 
         inverseJoinColumns = @JoinColumn(name = "user_id")
     )	    

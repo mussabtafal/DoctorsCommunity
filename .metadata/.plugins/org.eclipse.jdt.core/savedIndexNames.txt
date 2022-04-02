@@ -71,7 +71,6 @@ INDEX VERSION 1.131+C:\Users\mussa\Dropbox\PC\Desktop\Java_project\.metadata\.pl
 4002457008.index
 626072976.index
 3508897448.index
-2869020176.index
 2641317349.index
 968493878.index
 1385184679.index

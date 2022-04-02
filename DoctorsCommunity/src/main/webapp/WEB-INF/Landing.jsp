@@ -27,7 +27,7 @@
               <video autoplay muted loop>
                   <source src="/vid/Pexels Videos 2450251.mp4" type="video/mp4">
               </video>
-              <h2>Doctor's Community</h2>
+              <h2 style="font-family:fantasy">Doctor's Community</h2>
             </div>
         </section>
 

@@ -65,7 +65,7 @@ public class User {
  
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
-	 name = "users_comments", 
+	 name = "likes", 
 	joinColumns = @JoinColumn(name = "user_id"), 
 	inverseJoinColumns = @JoinColumn(name = "comment_id")
 	 )

@@ -29,7 +29,7 @@ public class DoctorService {
 		return this.commentRepo.findAll();
 	}
 	
-    public Comment findComment(Long id) {
+    public Comment findCommentById(Long id) {
         Optional<Comment> optionalComment = this.commentRepo.findById(id);
         if(optionalComment.isPresent()) {
             return optionalComment.get();
@@ -57,15 +57,17 @@ public class DoctorService {
 		
 	}
 	
-//	public Comment addCoomentToUser(User user, Comment comment) {
-//		user.getUserComments().add(comment);
-//		return this.commentRepo.save(comment);
-//	}
-//	
-//	public Comment addCommentToPost(Post post, Comment comment) {
-//		post.getPostComments().add(comment);
-//		return this.commentRepo.save(comment);
-//	}
+ 	public Comment likeComment (User user, Comment comment) {
+ 		comment.getLikedByUsers().add(user);
+  		return commentRepo.save(comment);
+  	}
+	
+ 	public Comment cancelLikeComment(User user, Comment comment) {
+ 		comment.getLikedByUsers().removeIf(item -> item.getId().equals(user.getId()));
+  		return commentRepo.save(comment);
+  	}
+    
+	
 	
 	//Post
 	public  List<Post> allPosts(){
