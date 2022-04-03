@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.codingdojo.doctors.models.Comment;
 import com.codingdojo.doctors.models.User;
 import com.codingdojo.doctors.repositories.RoleRepository;
 import com.codingdojo.doctors.repositories.UserRepository;
@@ -21,9 +22,9 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
     
-    public List<User> findAllUser() {
-    	return userRepository.findAll();
-    }
+    public  List<User> allUsers(){
+		return this.userRepository.findAll();
+	}
     // 1
     public void saveWithUserRole(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -49,4 +50,9 @@ public class UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+    
+	public void deleteUser(Long id) {
+		this.userRepository.deleteById(id);
+		
+	}
 }

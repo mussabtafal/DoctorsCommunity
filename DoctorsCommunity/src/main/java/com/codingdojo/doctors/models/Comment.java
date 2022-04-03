@@ -64,8 +64,6 @@ public class Comment {
     )	    
     private List<User> likedByUsers;
     
-    @OneToMany(mappedBy="ratingComment", fetch = FetchType.LAZY)
-    private List<Rating> commentRatings;
 	
 	public Comment() {
 	}
@@ -115,12 +113,6 @@ public class Comment {
 	}
 	public void setLikedByUsers(List<User> likedByUsers) {
 		this.likedByUsers = likedByUsers;
-	}
-	public List<Rating> getCommentRatings() {
-		return commentRatings;
-	}
-	public void setCommentRatings(List<Rating> commentRatings) {
-		this.commentRatings = commentRatings;
 	}
 
 	

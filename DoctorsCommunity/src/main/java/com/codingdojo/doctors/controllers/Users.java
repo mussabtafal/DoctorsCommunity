@@ -1,16 +1,20 @@
 package com.codingdojo.doctors.controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.codingdojo.doctors.models.User;
 import com.codingdojo.doctors.services.UserService;
 import com.codingdojo.doctors.validator.UserValidator;
@@ -103,11 +107,21 @@ public class Users {
     }
     
 // Admin page template render
-    @RequestMapping("/admin")
-    public String adminPage(Principal principal, Model model) {
-        String username = principal.getName();
+    @GetMapping("/admin")
+    public String adminPage( Model model,Principal principal) {
+    	String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
+        List<User> siteUsers = userService.allUsers();
+        model.addAttribute("siteUsers", siteUsers);
         return "adminPage.jsp";
+    }
+    
+// Delete user 
+    
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") Long id) {
+    	userService.deleteUser(id);
+        return "redirect:/admin";
     }
     
     

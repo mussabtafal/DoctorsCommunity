@@ -69,6 +69,13 @@ public class DoctorController {
         model.addAttribute("posts", posts);
         return "AllPosts.jsp";
     }
+    
+//Delete Post
+    @GetMapping("/deletepost/{id}")
+    public String deletePost(@PathVariable("id") Long id) {
+    	doctorService.deletePost(id);
+        return "redirect:/posts";
+    }
 
 // new comment
     @GetMapping("/posts/{id}")
@@ -154,19 +161,5 @@ public class DoctorController {
         return "DoctorProfile.jsp";
     }
     
-//Adminstrator user handling page
-    
-    @GetMapping("/admin")
-    public String adminPage( Model model,Principal principal) {
-    	String username = principal.getName();
-        model.addAttribute("currentUser", userService.findByUsername(username));
-        User thisUser = userService.findByUsername(username);
-        model.addAttribute("userRole", thisUser);
-        List<User> siteUsers = userService.findAllUser();
-        model.addAttribute("users", siteUsers);
-        return "adminPage.jsp";
-    }
-
-
 
 }

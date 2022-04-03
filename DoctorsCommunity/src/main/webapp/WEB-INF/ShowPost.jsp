@@ -74,12 +74,9 @@
      				<div class="p-3 overflow-auto" style="height:400px; border: 2px solid black; border-radius: 15px;">
     				<c:forEach items="${comments}" var="comment">
      					<div class="overflow-auto p-3 my-4" style="height:190px; border: 2px solid black; border-radius: 15px;">
+     						<p style="font-size: 20px;">Dr. <c:out value="${comment.commentUser.username}"></c:out></p>
 							<p style="font-size: 20px;"><c:out value="${comment.content}"></c:out></p>
 							<div class="text-end" >
-								<div class="form-floating mb-3 col-1 ">
-								  <input type="number" min ="0" max="5" class="form-control" style="width:70px" id="floatingInput" placeholder="name@example.com">
-								  <label for="floatingInput">Rating</label>
-								</div>
 				                <c:set var="liked" value="${false}"/>
                                 <c:forEach items="${comment.likedByUsers}" var="liker">
                                 <c:set var="user1" value="${currentUser.id}"/>
