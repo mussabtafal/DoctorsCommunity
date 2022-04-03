@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +17,11 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#doctors">Featured Doctors</a></li>
-                <li><a href="#statistics">Statistics</a></li>
+                <li><a href="#statistics">Covid 19</a></li>
                 <li><a  href="#join" >Register</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="/posts" >Our Community</a></li>
-                <li><a href="/user/#UserId">Profile</a></li>
+                <li><a href="/login">Log in</a></li>
               </ul> 
             </nav>
         <section id="home" >
@@ -32,9 +34,46 @@
         </section>
 
         <section id="doctors">
+        	<div style="display: flex;">
+		        <div style="background-color: lightgrey; border: 2px solid black; border-radius: 20px; height: 350px; width: 250px; margin: 0px 50px; box-shadow: 10px 10px 10px black">
+		            <img src="https://aawafi.com/uploads/partners/profile/doctor.jpg" alt="doc1"
+		                style="height:250px; width: 250px; border-radius: 20px 20px 0px 0px">
+		            <h2 style="color:black">Dr. Suma Claren</h2>
+		            <h3 style="color:black">Speciality: Gastroentologist</h3>
+		        </div>
+		        <div style="background-color: lightgrey; border: 2px solid black; border-radius: 20px; height: 350px; width: 250px; margin: 0px 50px; box-shadow: 10px 10px 10px black">
+		            <img src="https://i1.rgstatic.net/ii/profile.image/1033513998491649-1623420347312_Q512/Ramzi-Tabbalat-2.jpg"
+		                alt="doc2" style="height:250px; width: 250px; border-radius: 20px 20px 0px 0px; ">
+		            <h2 style="color:black">Dr. Ramzi Tabbalat</h2>
+		            <h3 style="color:black">Speciality: Cardiologist</h3>
+		        </div>
+		        <div style="background-color: lightgrey; border: 2px solid black; border-radius: 20px; height: 350px; width: 250px; margin: 0px 50px; box-shadow: 10px 10px 10px black">
+		            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVG7yl1PcShas8Tk4r16M0HW7T7St-AuAHuYZXuZ4t_qOxQ72NofTqaTO0SZNdR9YT_BA&usqp=CAU" alt="doc1"
+		                style="height:250px; width: 250px; border-radius: 20px 20px 0px 0px">
+		            <h2 style="color:black">Dr. Smith Johnson</h2>
+		            <h3 style="color:black">Speciality: Pulmonologist</h3>
+		        </div>
+		        <div style="background-color: lightgrey; border: 2px solid black; border-radius: 20px; height: 350px; width: 250px; margin: 0px 50px; box-shadow: 10px 10px 10px black">
+		            <img src="https://imagesx.practo.com/providers/dr-ankit-mangla-pediatric-nephrologist-jaipur-bebe160e-eef0-4c1e-85a0-26e34b7fbb6e.jpg?i_type=t_100x100-4x" alt="doc1"
+		                style="height:250px; width: 250px; border-radius: 20px 20px 0px 0px">
+		            <h2 style="color:black">Dr. Ankit Manglan</h2>
+		            <h3 style="color:black">Speciality: Pediatrician</h3>
+		        </div>
+		    </div>
         </section>
 
         <section id="statistics">
+        	 <div>
+		        <h1 style="font-family:fantasy">Covid 19 Live App Tracker</h1>
+		        <form id="myForm">
+		            <input style="height:30px; width:400px; border: 3px solid blue; border-radius:10px;" type="text" id="country" placeholder="country" required>
+		            <input style="background-color:black; color:white; font-weight:bold; height:35px; width:80px; border: 2px solid blue; border-radius:20px;" type="submit" value="Stats">
+		        </form>
+		        <div style="margin-top: 70px; padding: 100px; border: 3px solid white; border-radius: 10px; width:400px; height:50px;">
+			        <div id="confirmed" style="font-size:20px; font-weight:bold;"></div>
+			        <div id="deaths" style="font-size:20px; font-weight:bold;"></div>
+		        </div>
+		    </div>
         </section>
         <section id="join">
           <div class="square">
@@ -42,22 +81,21 @@
               <span></span>
               <span></span>
               <span></span>
-              <a href="/register" class="a1">Register</a>
-              <a href="/login" class="a1">Log in</a>
+              <a href="/registration" class="a1">Register as a Patient</a>
+              <a href="registration/doctor" class="a1">Register as a Doctor</a>
             </div>
           </div>
         </section>
         <section id="about">
-            <h1>About Us</h1>
-            <ul style="list-style: none;line-height: 40px;width: 1200px;font-size: 23px;">
-                    <li style="color: rgb(0, 0, 0);">This Website was designed by three enthusiastic junior Web-Devlopers, The idea of JobPal came
-                      from the need for a platform where Job opportunities can be offered and exchanged. We encourage
-                      all the users of the platform to reach out to all the companies registered on the website. Life
-                      is all about opportunities. We hope that this Website will be the seed for all Job seekers who 
-                      are trying to find a place to belong, a place where people can grow professionally and reflect 
-                      on their Careers, We wish you all the luck in the world !</li>
+            <h1 style="color:black">About Us</h1>
+            <ul style="list-style: none;line-height: 40px;width: 1200px;font-size: 23px; color:black">
+                    <li style="color: rgb(0, 0, 0);">This Website was designed by three enthusiastic junior Web-Devlopers, The idea of Doctor's Community came
+                      from the need for a platform where patients can be offered safe medical advice from home. We encourage
+                      all the users of the platform to reach out to all the Doctors registered on the website. We hope that this Website will be a base for
+                      all Patients who cannot afford proper medical treatment, and do self check ups through listing symptoms to our expert on site doctors,
+                      We wish you a safe disease free happy life !</li>
                     <li style="margin-top: 20px; font-weight: bold;">Designed and maintained By:</li>
-                    <li>Mussab Tafal,&nbsp;  Rafat Darawshe,&nbsp;  Masa Shabib</li>
+                    <li>Mussab Tafal,&nbsp;  Mahmoud Al-Issa,&nbsp;  Odai Sheikh</li>
                     <li style="margin-top: 20px;">Please feel free to contact us regarding any problems or bugs found on the website, We promise
                       that we will address all the issues as soon as possible, We are open to all sources of help.</li>
                     <li style="margin: 15px 0px;">Contact Information: &nbsp;&nbsp;&nbsp;<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/640px-Facebook_icon_2013.svg.png"  
@@ -75,4 +113,30 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script type="text/javascript" src="js/landing.js"></script>
+      <script>
+    const form = document.getElementById("myForm")
+    form.addEventListener('submit', function (e) {
+        e.preventDefault()
+        var country = document.getElementById("country").value
+        var url = "https://api.covid19api.com/total/country/" + country
+        covidData(url)
+    })
+    async function covidData(url) {
+        let response = await fetch(url)
+        let data = await response.json()
+        console.log(data)
+
+        let length = data.length
+        let index = length - 1
+
+        let confirmed = document.getElementById("confirmed")
+        let deaths = document.getElementById("deaths")
+
+        confirmed.innerHTML = "";
+        deaths.innerHTML = "";
+
+        confirmed.append("Total Confirmed Cases: " + data[index].Confirmed)
+        deaths.append("Total Death Cases: " + data[index].Deaths)
+    }
+</script>
 </html>

@@ -22,58 +22,34 @@
   </head>
   <body>
   	<div class="container-fluid">
-  <div class="row">
-       <div class="nav-container bg-secondary">
-         <nav class="navbar navbar-expand-lg navbar-light">
-           <div class="container-fluid">
-             <a class="navbar-brand" href="/"><img alt="" src="/img/logoBLUE.jpg"  height="40px" style="border-radius: 7px;"></a>
-             <button
-               class="navbar-toggler"
-               type="button"
-               data-bs-toggle="collapse"
-               data-bs-target="#navbarTogglerDemo02"
-               aria-controls="navbarTogglerDemo02"
-               aria-expanded="false"
-               aria-label="Toggle navigation"
-             >
-               <span class="navbar-toggler-icon"></span>
-             </button>
-             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                 <li class="nav-item">
-                   <a class="nav-link active" aria-current="page" href="/"
-                     >Home</a
-                   >
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link" aria-current="page" href="#"
-                     >Register</a
-                   >
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link" aria-current="page" href="#">Section</a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link" aria-current="page" href="/#about"
-                     >About us</a
-                   >
-                 </li>
-               </ul>
-               <form class="d-flex">
-                 <input
-                   class="form-control me-2"
-                   type="search"
-                   placeholder="Search"
-                   aria-label="Search"
-                 />
-                 <button class="btn btn-primary" type="submit">
-                   Search
-                 </button>
-               </form>
-             </div>
-           </div>
-         </nav>
-       </div>
+    <div class="row">
+    <nav class="navbar navbar-expand-lg bg-secondary" style="display: flex; justify-content: space-between;">
+        <div class="logo">
+            <a class="navbar-brand" href="/"><img alt="" src="/img/logoBLUE.jpg"  height="40px" style="border-radius: 7px;"></a>
+        </div>
+        <div class="otherbtns" style="display:flex;">
+        	<div>
+            <a href="/" class="btn btn-primary ">Home</a>
+            <c:forEach items="${userRole.roles}" var="role">
+            	 <c:if test="${role.id == 1}">
+                   <c:set var="patient" value="${true}"/>
+               	 </c:if>
+      		</c:forEach> 
+      		<c:choose>
+               <c:when test="${patient == true}">
+                       <a href="/user/${currentUser.id}" class="btn btn-primary ">profile</a>
+               </c:when>
+               <c:otherwise>
+                      <a href="/doctor/${currentUser.id}" class="btn btn-primary ">profile</a>
+               </c:otherwise>
+           </c:choose>
+        	</div>
+             <form id="logoutForm" method="POST" action="/logout">
+		        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		        <input type="submit" value="Logout!" class="btn btn-danger ms-1" />
+	    	 </form>
+        </div>
+    </nav>
      </div>
       <div class="row pt-5">
       		<h1>Doctor's Community</h1>
@@ -94,95 +70,62 @@
           	</div>
        </div>
   	</div>
-    <footer class="text-center text-lg-start text-white bg-secondary" >
-                <!-- Grid container -->
+     <footer class="text-center text-lg-start text-white bg-secondary mt-4" >
                 <div class="container p-4 pb-0">
-                    <!-- Section: Links -->
                     <section class="">
-                        <!--Grid row-->
                         <div class="row">
-                            <!-- Grid column -->
                             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                                 <h6 class="text-uppercase mb-4 font-weight-bold">
-                                    Company name
+                                    Doctor Community
                                 </h6>
                                 <p>
-                                    Here you can use rows and columns to organize your footer
-                                    content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                                    elit.
+                                    Our site is a community-based web application with the main purpose exchanging knowledge between members, help raising medical awareness.
+                                    Users can register to the platform and share the medical cases and a team of registered doctors can help them by advising, approaching members or refer them to nearby specialist Doctors, Hospital or Clinics.
                                 </p>
                             </div>
-                            <!-- Grid column -->
-
                             <hr class="w-100 clearfix d-md-none" />
-
-                            <!-- Grid column -->
                             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                                <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                                <h6 class="text-uppercase mb-4 font-weight-bold">Our Partners</h6>
                                 <p>
-                                    <a class="text-white">MDBootstrap</a>
+                                    <a class="text-white">MOH</a>
                                 </p>
                                 <p>
-                                    <a class="text-white">MDWordPress</a>
+                                    <a class="text-white">AHA</a>
                                 </p>
                                 <p>
-                                    <a class="text-white">BrandFlow</a>
-                                </p>
-                                <p>
-                                    <a class="text-white">Bootstrap Angular</a>
+                                    <a class="text-white">COVID-19 Tracker</a>
                                 </p>
                             </div>
-                            <!-- Grid column -->
-
                             <hr class="w-100 clearfix d-md-none" />
-
-                            <!-- Grid column -->
                             <hr class="w-100 clearfix d-md-none" />
-
-                            <!-- Grid column -->
                             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                                <p><i class="fas fa-home mr-3"></i> Axsos Academy, NY 10012, US</p>
-                                <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                                <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                                <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                                <h6 class="text-uppercase mb-4 font-weight-bold">Contact Us</h6>
+                                <p><i class="fas fa-home mr-3"></i> Ramalla, Axsos Academy</p>
+                                <p><i class="fas fa-envelope mr-3"></i> doctorcommunity@mail.com</p>
+                                <p><i class="fas fa-phone mr-3"></i> 05 234 567 88</p>
+                                <p><i class="fas fa-print mr-3"></i> 05 234 567 89</p>
                             </div>
-                            <!-- Grid column -->
-
-                            <!-- Grid column -->
                  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                      <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
-
                      <!-- Facebook -->
-                      <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
-                         role="button"><img alt="" src="/img/facebook-logo.jpg"  height="40px" style="border-radius: 7px;"></a>
-
+                      <img alt="" src="/img/facebook-logo.jpg"  height="40px" style="border-radius: 7px;">
                      <!-- Twitter -->
-                       <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
+                       <a class="btn btn-floating m-1 bg-secondary" href="#"
                          role="button"><img alt="" src="/img/Twitter.png"  height="40px" style="border-radius: 7px;"></a>
-
-
                      <!-- Linkedin -->
-                     <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
-                         role="button"><img alt="" src="/img/linked.png"  height="40px" style="border-radius: 7px;"></a>
+                     <img alt="" src="/img/linked.png"  height="40px" style="border-radius: 7px;">
                      <!-- Github -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: black; href="#!"
-                         role="button"><img alt="" src="/img/github.png"  height="40px" style="border-radius: 7px;"></a>
-                 
+                    <a class="btn btn-floating m-1 bg-secondary" href="#"
+                         role="button"><img alt="" src="/img/github.png"  height="40px" width="40px" style="border-radius: 7px;"></a>
                         </div>
-                        <!--Grid row-->
                     </section>
-                    <!-- Section: Links -->
                 </div>
-                <!-- Grid container -->
-
                 <!-- Copyright -->
                 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-                    © 2020 Copyright:
-                    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                    Â© 2022 Copyright:
+                    <a class="text-white" href="#">www.doctorcommunity.com</a>
                 </div>
-                <!-- Copyright -->
-            </footer>   		
+            </footer>  		
   </body>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

@@ -31,7 +31,7 @@ public class DoctorController {
     
     
     @GetMapping("/")
-    public String LandingPage( ) {
+    public String LandingPage() {
     	return "Landing.jsp";
     }
     
@@ -62,6 +62,9 @@ public class DoctorController {
     public String allPost(Principal principal, Model model) {
     	String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
+        User thisUser = userService.findByUsername(username);
+        System.out.println(thisUser.getRoles());
+        model.addAttribute("userRole", thisUser);
         List<Post> posts = this.doctorService.allPosts();
         model.addAttribute("posts", posts);
         return "AllPosts.jsp";
@@ -116,16 +119,6 @@ public class DoctorController {
 			return "redirect:/posts/"+id;
 	}
 	
-// Doctor profile
-    @GetMapping("/doctor/{id}")
-    public String doctore(@PathVariable("id") Long id, Model model) {
-        return "doctore.jsp";
-    }
-// User profile
-    @GetMapping("/patient/{id}")
-    public String pationt(@PathVariable("id") Long id, Model model) {
-        return "pationt.jsp";
-    }
 // render by category
     @GetMapping("/category/{name}")
     public String getByGategory(@PathVariable("name") String name, Model model, Principal principal) {
@@ -136,6 +129,42 @@ public class DoctorController {
     	System.out.println(x);
     	model.addAttribute("posts", x);
     	return "CatPost.jsp";
+    }
+    
+//User profiles
+    
+    @GetMapping("/user/{id}")
+    public String patientProf(@PathVariable("id") Long id, Model model,Principal principal) {
+    	String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        User thisUser = userService.findByUsername(username);
+        List<Post> userPosts = thisUser.getUserPosts();
+        model.addAttribute("posts", userPosts);
+        return "UserProfile.jsp";
+    }
+    
+    @GetMapping("/doctor/{id}")
+    public String doctorProf(@PathVariable("id") Long id, Model model,Principal principal) {
+    	String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        User thisUser = userService.findByUsername(username);
+        model.addAttribute("userRole", thisUser);
+        List<Comment> userComments = thisUser.getUserComments();
+        model.addAttribute("comments", userComments);
+        return "DoctorProfile.jsp";
+    }
+    
+//Adminstrator user handling page
+    
+    @GetMapping("/admin")
+    public String adminPage( Model model,Principal principal) {
+    	String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        User thisUser = userService.findByUsername(username);
+        model.addAttribute("userRole", thisUser);
+        List<User> siteUsers = userService.findAllUser();
+        model.addAttribute("users", siteUsers);
+        return "adminPage.jsp";
     }
 
 

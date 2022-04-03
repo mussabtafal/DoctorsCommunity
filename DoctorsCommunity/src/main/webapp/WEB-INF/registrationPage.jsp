@@ -22,7 +22,7 @@
 			   <p><form:errors path="user.*"/></p>
 			   <form:form method="POST" action="/registration" modelAttribute="user">
 			   
-			   	<div class="form-floating my-3">
+			   	    <div class="form-floating my-3">
 			             <form:input path="username" class="form-control" id="floatingInput" placeholder="name@example.com"/>
 			             <form:label path="username" for="floatingInput">Username:</form:label>
 			  		</div>
@@ -35,12 +35,12 @@
 			             <form:label path="age" type="number" for="floatingInput">Age:</form:label>
 			  		</div>
 			  		<div class="form-floating my-3">
-			             <form:input path="password" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-			             <form:label path="password" type="password" for="floatingInput">Password:</form:label>
+			             <form:input path="password" class="form-control" type="password" id="floatingInput" placeholder="name@example.com"/>
+			             <form:label path="password" for="floatingInput">Password:</form:label>
 			  		</div>
 			  		<div class="form-floating my-3">
-			             <form:input path="passwordConfirmation" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-			             <form:label path="passwordConfirmation" type="password" for="floatingInput">Confirm Password:</form:label>
+			             <form:input path="passwordConfirmation" type="password" class="form-control" id="floatingInput" placeholder="name@example.com"/>
+			             <form:label path="passwordConfirmation" for="floatingInput">Confirm Password:</form:label>
 			  		</div>
 			       <button type="submit" class="btn btn-light">Register</button>
 			   </form:form>
